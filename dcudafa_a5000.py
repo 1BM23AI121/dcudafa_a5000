@@ -184,7 +184,7 @@ def main() -> None:
 
     cfg = DCUDAFAConfig(
         n_fireflies  = args.n_fireflies,
-        n_iterations = args.n_iterations,
+        n_iterations = args.iterations,
         k            = args.k,
         vix_current  = args.vix,
         tier1        = args.tier1,

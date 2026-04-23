@@ -1,0 +1,88 @@
+# D-CUDA-FA RTX A5000 — .gitignore
+# ==================================
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+*.whl
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+.env
+
+# ── CUDA / CuPy JIT cache ─────────────────────────────────────────────────────
+# CuPy caches compiled PTX between runs — safe to regenerate
+.cupy/
+cupy_cache/
+*.ptx
+*.cubin
+*.fatbin
+~/.cupy/       # home-dir CuPy cache (gitignore hint for contributors)
+
+# ── Experiment results & logs ─────────────────────────────────────────────────
+# Keep directory structure (tracked via .gitkeep) but ignore generated files
+results/*
+!results/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# ── Data ──────────────────────────────────────────────────────────────────────
+# Kaggle CSV is not redistributable — must be downloaded independently
+data/application_train.csv
+data/*.csv
+data/*.parquet
+data/*.feather
+# Keep the data/ directory itself
+!data/.gitkeep
+
+# ── Plots & figures ───────────────────────────────────────────────────────────
+*.png
+*.pdf
+*.svg
+!docs/**/*.png   # allow docs images if a docs/ dir is added
+
+# ── pytest ────────────────────────────────────────────────────────────────────
+.pytest_cache/
+.cache/
+htmlcov/
+.coverage
+coverage.xml
+*.coveragerc
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── IDE / editor ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# ── Profiling & debug ─────────────────────────────────────────────────────────
+*.prof
+*.pstat
+*.ncu-rep        # NVIDIA Nsight Compute report
+*.nvvp           # NVIDIA Visual Profiler
+*.qdrep          # Nsight Systems report
+nsys_*.qdstrm
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+*.swp
+*~

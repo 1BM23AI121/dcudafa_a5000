@@ -1,0 +1,32 @@
+# D-CUDA-FA RTX A5000 — Python Dependencies
+# ============================================
+# Install with: pip install -r requirements.txt
+#
+# CuPy: select wheel matching your CUDA version
+#   CUDA 12.x  →  cupy-cuda12x   (recommended for RTX A5000 + modern drivers)
+#   CUDA 11.x  →  cupy-cuda11x
+#   Generic    →  cupy (builds from source — slow)
+#
+# RTX A5000 requires:
+#   • CUDA Toolkit ≥ 12.1  (sm_86 support)
+#   • Driver ≥ 525.60.13
+#   • Python ≥ 3.10
+
+# ── Core GPU ──────────────────────────────────────────────────────────────────
+cupy-cuda12x>=13.0.0          # CuPy for CUDA 12.x (RTX A5000 ships with CUDA 12.x)
+numpy>=1.26.0                 # CPU array ops, pre-processing
+
+# ── Scientific / ML ───────────────────────────────────────────────────────────
+scipy>=1.12.0                 # Cholesky fallback (CPU path only)
+scikit-learn>=1.4.0           # StandardScaler, silhouette_score, precision/recall
+
+# ── Data handling ─────────────────────────────────────────────────────────────
+pandas>=2.2.0                 # Home Credit CSV loading
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+tqdm>=4.66.0                  # Progress bars in benchmark.py
+matplotlib>=3.8.0             # Convergence plots (optional)
+seaborn>=0.13.0               # Cluster heatmaps (optional)
+
+# ── Dev / testing ─────────────────────────────────────────────────────────────
+pytest>=8.0.0

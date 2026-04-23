@@ -328,7 +328,6 @@ class DCUDAFA:
         # exactly at the Basel III floor, giving meaningful non-zero CAR values.
         # Example: n=500K, avg_PD=5%, LGD=0.45 -> tier1 = 0.08*500000*0.28125 = 11,250
         if self.cfg.tier1 == 0.0:
-            import dataclasses
             n      = self._Xp.shape[0]
             avg_pd = float(self._pd_col.mean()) if self._pd_col is not None else 0.05
             avg_pd = float(np.clip(avg_pd, 0.001, 0.999))
@@ -413,6 +412,9 @@ class DCUDAFA:
             print(f"  Fireflies: N={cfg.n_fireflies}  T={cfg.n_iterations}")
             mem_mb = n * d * 8 / 1e6
             print(f"  VRAM pin : {mem_mb:.1f} MB (dataset) — no PCIe after this")
+            print(f"  Tier 1   : {self.cfg.tier1:,.2f}  "
+                  f"({'auto-scaled' if cfg.tier1 == 0.0 else 'user-specified'})")
+            print(f"  CAR floor: {cfg.car_min:.0%}  (Basel III minimum)")
 
         population = self._init_population(rng)
 

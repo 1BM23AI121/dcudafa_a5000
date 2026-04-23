@@ -142,7 +142,8 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--k",           type=int, default=5)
     p.add_argument("--vix",         type=float, default=20.0,
                    help="VIX(t) for stress scenario (default 20 = neutral)")
-    p.add_argument("--tier1",       type=float, default=1_000_000.0)
+    p.add_argument("--tier1",       type=float, default=0.0,
+                   help="Tier 1 capital (0 = auto-scale to Basel III 8%% floor)")
     p.add_argument("--seed",        type=int,   default=42)
     p.add_argument("--benchmark",   action="store_true",
                    help="Run Table II scalability benchmark after main fit")
